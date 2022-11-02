@@ -12,6 +12,10 @@
     --socials-bg: #AFB1B8;
     --footer-communication-color: rgba(255, 255, 255, .6);
     --timing-function: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --footer-socials-bg: rgba(255, 255, 255, .1);
+    --occupation-text-bg: rgba(47, 48, 58, 0.8);
+    --border-modal-close-btn: rgba(0, 0, 0, 0.1);
+    --button-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15)
 }
 
 body {
@@ -36,8 +40,17 @@ address {
     font-style: normal;
 }
 
-button {
+.button {
+    font-family: inherit;
+    font-weight: 700;
+    line-height: calc(30 / 16);
+    letter-spacing: 0.06em;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+    display: inline-block;
     cursor: pointer;
+    transition: background-color var(--timing-function), box-shadow var(--timing-function);
 }
 
 .section {
@@ -52,7 +65,12 @@ button {
 }
 
 .title {
+    margin-bottom: 50px;
     text-align: center;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.17;
+
     color: var(--title-text-color);
 }
 
@@ -72,11 +90,6 @@ button {
     padding: 0 15px;
 }
 
-.features .item:not(:last-child),
-.occupation .item:not(:last-child),
-.team .item:not(:last-child) {
-    margin-right: 30px;
-}
 
 /* ----------HEADER----------- */
 
@@ -84,12 +97,12 @@ button {
     border-bottom: 1px solid var(--header-border-color);
 }
 
-.header .main-nav {
+.main-nav {
     display: flex;
     align-items: center;
 }
 
-.header .nav {
+.nav {
     display: flex;
     align-items: center;
 }
@@ -100,30 +113,29 @@ button {
     font-weight: 700;
     font-size: 26px;
     line-height: 1.2;
-}
-
-.header .logo {
-    padding-top: 24px;
-    padding-bottom: 25px;
-    margin-right: 60px;
-
-    color: var(--logo-header-color);
-}
-
-
-.accent {
     color: var(--accent-color);
 }
 
-.header .nav-list {
+.nav__logo {
+    padding-top: 24px;
+    padding-bottom: 25px;
+    margin-right: 60px;
+}
+
+
+.nav__accent {
+    color: var(--logo-header-color);
+}
+
+.nav__list {
     display: flex;
 }
 
-.header .item:not(:first-child) {
+.nav__item:not(:first-child) {
     padding-left: 50px;
 }
 
-.nav-list .link {
+.nav__link {
     display: block;
     padding: 32px 0;
 
@@ -133,17 +145,17 @@ button {
     transition: color var(--timing-function);
 }
 
-.nav-list .link:hover,
-.nav-list .link:focus {
+.nav__link:hover,
+.nav__link:focus {
     color: var(--accent-color);
 }
 
-.link.current {
+.nav__link--current {
     position: relative;
     color: var(--accent-color);
 }
 
-.link.current::after {
+.nav__link--current::after {
     position: absolute;
     left: 0;
     bottom: 0;
@@ -154,24 +166,20 @@ button {
     border-radius: 2px;
 }
 
-.contact.list {
+.contact__list {
     display: flex;
     margin-left: auto;
     align-items: center;
+    gap: 50px;
 
 }
 
-.contact .mail {
-    margin-right: 50px;
-}
-
-.mail>.icon,
-.phone>.icon {
+.contact__icon {
     margin-right: 10px;
     fill: currentColor;
 }
 
-.contact .link {
+.contact__link {
     display: flex;
     align-items: center;
     padding: 32px 0;
@@ -182,8 +190,8 @@ button {
     transition: color var(--timing-function);
 }
 
-.contact .link:hover,
-.contact .link:focus {
+.contact__link:hover,
+.contact__link:focus {
     color: var(--accent-color);
 
 }
@@ -204,7 +212,7 @@ button {
     background-size: cover;
 }
 
-.hero-title {
+.hero__title {
     margin: 0 auto;
     margin-bottom: 30px;
     max-width: 698px;
@@ -217,29 +225,20 @@ button {
     color: var(--primary-color);
 }
 
-.hero .button {
-    display: inline-block;
+.hero__button {
     padding: 10px 32px;
     min-width: 216px;
-    text-align: center;
-    font-family: inherit;
-    font-size: 16px;
     color: var(--primary-color);
     background-color: var(--accent-color);
-    border-radius: 4px;
-    border: none;
-    transition: background-color var(--timing-function), box-shadow var(--timing-function);
 }
 
 .button:hover,
 .button:focus {
     background-color: var(--hero-btn-active);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-
+    box-shadow: 0px 4px 4px var(--button-box-shadow);
 }
 
 /* -------------FEATURES------------- */
-
 .visually-hidden {
     position: absolute;
     white-space: nowrap;
@@ -253,18 +252,22 @@ button {
     margin: -1px;
 }
 
-
-.features .list {
+.features__list {
     display: flex;
+    gap: 30px;
 }
 
-.features .item {
+.features___item {
     width: 270px;
 }
 
-.features .icon-bg {
+.features__icon-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 30px;
-    padding: 25px 100px;
+    width: 270px;
+    height: 120px;
     background-color: var(--portfolio-bg-btn-color);
     border-radius: 4px;
 }
@@ -273,7 +276,7 @@ button {
     color: var(--title-text-color);
 }
 
-.features .subtitle {
+.features__subtitle {
     margin-bottom: 10px;
 
     font-size: 14px;
@@ -282,34 +285,27 @@ button {
     text-transform: uppercase;
 }
 
-.features .text {
+.features__text {
     line-height: 1.71;
 }
 
 /* -------OCCUPATION---------------- */
-.section.occupation {
+.occupation {
     padding-top: 0;
 }
 
-.occupation .title {
-    margin-bottom: 50px;
-
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 1.17;
-}
-
-.occupation .list {
+.occupation__list {
     display: flex;
+    gap: 30px;
 }
 
-.occupation-thumb {
+.occupation__thumb {
     position: relative;
     display: flex;
     justify-content: center;
 }
 
-.occupation-label {
+.occupation__text {
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -321,42 +317,32 @@ button {
     line-height: 1.14;
     text-transform: uppercase;
     color: var(--primary-color);
-    background-color: rgba(47, 48, 58, 0.8);
+    background-color: var(--occupation-text-bg);
 
 }
 
 
 /* -----------TEAM----------------- */
-.section.team {
+.team {
     background-color: var(--portfolio-bg-btn-color);
 }
 
-.team .list {
+.team__list {
     display: flex;
+    gap: 30px;
 }
 
-.team .image {
+.team__image {
     margin-bottom: 30px;
 }
 
-.team .item {
+.team__item {
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 0px 0px 4px 4px;
     background-color: var(--primary-color);
 }
 
-
-.team .title {
-    margin-bottom: 50px;
-
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 1.17;
-    text-align: center;
-    color: var(--title-text-color);
-}
-
-.team .subtitle {
+.team__subtitle {
     margin-bottom: 10px;
 
     font-weight: 500;
@@ -365,7 +351,7 @@ button {
     text-align: center;
 }
 
-.team .text {
+.team__text {
     margin-bottom: 16px;
 
     font-size: 16px;
@@ -373,18 +359,19 @@ button {
     text-align: center;
 }
 
-.socials.list {
+.socials__list {
+    display: flex;
     padding-bottom: 30px;
     justify-content: center;
     gap: 10px;
 }
 
-.socials-item {
+.socials__item {
     width: 44px;
     height: 44px;
 }
 
-.socials-link {
+.socials__link {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -394,45 +381,34 @@ button {
     transition: background-color var(--timing-function);
 }
 
-.socials-link:hover,
-.socials-link:focus {
+.socials__link:hover,
+.socials__link:focus {
     background-color: var(--accent-color)
 }
 
-.socials .icon {
+.socials__icon {
     fill: var(--socials-bg);
     transition: fill var(--timing-function);
 }
 
-.socials-link:hover .icon,
-.socials-link:focus .icon {
+.socials__link:hover .socials__icon,
+.socials__link:focus .socials__icon {
     fill: var(--primary-color);
 }
 
 /* --------------CLIENTS------------------ */
-.client-title {
-    display: block;
-    margin-bottom: 50px;
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 1.17;
-    text-align: center;
-    letter-spacing: 0.03em;
 
-    color: var(--title-text-color)
-}
-
-.client-list {
+.client__list {
     display: flex;
     gap: 30px;
 }
 
-.client .item {
+.client__item {
     width: calc((100% - 150px) / 6);
     height: 90px;
 }
 
-.client .link {
+.client__link {
     display: flex;
     width: 100%;
     height: 100%;
@@ -445,13 +421,13 @@ button {
         border var(--timing-function);
 }
 
-.client .link:hover,
-.client .link:focus {
+.client__link:hover,
+.client__link:focus {
     color: var(--accent-color);
     border: 1px solid var(--accent-color);
 }
 
-.client .icon {
+.client__icon {
     display: block;
     fill: currentColor;
 }
@@ -469,42 +445,51 @@ button {
     align-items: baseline;
 }
 
-.footer .footer-left {
+/* ----------ADDRESS-------------- */
+
+.address {
     margin-right: 70px;
 }
 
-.footer .logo {
+.address__logo {
     display: inline-block;
     margin-bottom: 20px;
 
-    color: var(--primary-color);
-}
-
-.footer .link {
-    transition: color var(--timing-function);
-}
-
-.footer .link:hover,
-.footer .link:focus {
     color: var(--accent-color);
 }
 
-.footer .item:not(:last-child) {
+.address__accent {
+    color: var(--primary-color)
+}
+
+.address__item:not(:last-child) {
     display: block;
     margin-bottom: 9px;
 }
 
-.location {
+.address__location {
     line-height: 1.71;
     color: var(--primary-color);
+    transition: color var(--timing-function);
 }
 
-.communication {
+.address__location:hover,
+.address__location:focus {
+    color: var(--accent-color);
+}
+
+.address__link {
     line-height: 1.71;
     color: var(--footer-communication-color);
+    transition: color var(--timing-function);
 }
 
-/* -------FOOTER-MIDDLE-------- */
+.address__link:hover,
+.address__link:focus {
+    color: var(--accent-color);
+}
+
+/* -------FOOTER-SOCIALS-------- */
 
 .appeal {
     display: block;
@@ -515,35 +500,40 @@ button {
     color: var(--primary-color)
 }
 
-.footer-socials {
+.footer-socials__list {
     display: flex;
     padding-bottom: 0;
     gap: 10px;
 }
 
-.footer-socials .socials-link {
-    background-color: rgba(255, 255, 255, .1);
+.footer-socials__item {
+    width: 44px;
+    height: 44px;
+}
+
+.socials__link {
+    background-color: var(--footer-socials-bg);
     transition: background-color var(--timing-function);
 }
 
-.footer-socials .socials-link:hover,
-.footer-socials .socials-link:focus {
+.socials__link:hover,
+.socials__link:focus {
     background-color: var(--accent-color);
 }
 
-.footer-socials .icon {
+.footer-socials__icon {
     fill: var(--primary-color);
 }
 
-/* ----------FOOTER-RIGHT--------------- */
+/* ----------FOOTER-SIGNUP--------------- */
 
-.footer-right {
+.signup {
     margin-left: auto;
 }
 
-.footer-right .input {
+.signup__input {
     margin-right: 12px;
-    padding: 15px 16px;
+    padding: 0 16px;
     width: 358px;
     height: 50px;
     background-color: transparent;
@@ -553,23 +543,18 @@ button {
     border-radius: 4px;
 }
 
-.button {
-    display: inline-block;
-    align-items: center;
-    padding: 10px 28px;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: calc(30 / 16);
-    letter-spacing: 0.06em;
+.signup__input::placeholder {
+    padding: 15px 0;
+}
 
+.signup__button {
+    padding: 10px 28px;
     color: var(--primary-color);
     background: var(--accent-color);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-    border-radius: 4px;
-    border: none;
 }
 
-.footer-right .icon {
+.signup__icon {
     margin-left: 10px;
     transform: translateY(25%);
 }
@@ -587,17 +572,10 @@ button {
 
 .project .button {
     padding: 6px 22px;
-
-    font-family: inherit;
     font-weight: 500;
-    font-size: 16px;
     line-height: 1.63;
-    text-align: center;
     color: var(--title-text-color);
-    border-radius: 4px;
-    border: none;
     background-color: var(--portfolio-bg-btn-color);
-    transition: background-color var(--timing-function), color var(--timing-function), box-shadow var(--timing-function);
 }
 
 .project .button:hover,
@@ -689,11 +667,6 @@ button {
 
 /* -----------MODAL---------------  */
 
-.backdrop.is-hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
 .backdrop {
     position: fixed;
     top: 0;
@@ -703,6 +676,11 @@ button {
     background: rgba(0, 0, 0, 0.2);
     opacity: 1;
     transition: opacity var(--timing-function);
+}
+
+.backdrop--is-hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .backdrop.is-hidden .modal {
@@ -715,7 +693,7 @@ button {
     left: 50%;
     width: 528px;
     height: 581px;
-    padding: 40px 40px;
+    padding: 40px;
     background: var(--primary-color);
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
@@ -723,7 +701,7 @@ button {
     transition: transform var(--timing-function);
 }
 
-.modal .close {
+.modal__close-btn {
     position: absolute;
     top: 8px;
     right: 8px;
@@ -733,24 +711,21 @@ button {
     padding: 0;
     width: 30px;
     height: 30px;
-    background-color: var(--primary-color);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    border: 1px solid var(--border-modal-close-btn);
     border-radius: 50%;
     transition: fill var(--timing-function);
 }
 
-.modal .close:hover,
-.modal .close:focus {
+.modal__close-btn:hover,
+.modal__close-btn:focus {
     fill: var(--accent-color);
+    background-color: transparent;
+    box-shadow: none;
 }
 
 /* ----------------FORM---------------- */
-
-.form-group {
-    margin-bottom: 30px;
-}
-
-.form-title {
+.modal__title {
     margin-bottom: 12px;
     font-weight: 700;
     font-size: 20px;
@@ -759,7 +734,7 @@ button {
     color: var(--title-text-color);
 }
 
-.form-field {
+.modal__field {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -770,25 +745,25 @@ button {
     letter-spacing: 0.01em;
 }
 
-.form-field:nth-child(5) {
+.modal__field:nth-child(5) {
     margin-bottom: 0;
 }
 
-.form-field .input {
+.modal__input {
     margin-top: 4px;
-
-    padding: 11px 42px;
-    width: 448px;
+    padding-right: 10px;
+    padding-left: 42px;
+    width: 100%;
     height: 40px;
-    outline: none;
+    outline: transparent;
     border: 1px solid rgba(33, 33, 33, 0.2);
     fill: var(--accent-color);
     border-radius: 4px;
     transition: border var(--timing-function);
 }
 
-.form-field .input:hover,
-.form-field .input:focus {
+.modal__input:hover,
+.modal__input:focus {
     border: 1px solid var(--accent-color);
 }
 
@@ -798,7 +773,7 @@ button {
     resize: none;
 }
 
-.form-field .icon {
+.modal__icon {
     position: absolute;
     top: 29px;
     left: 12px;
@@ -807,12 +782,12 @@ button {
     transition: fill var(--timing-function);
 }
 
-.form-field .input:hover~.icon,
-.form-field .input:focus~.icon {
+.modal__input:hover~.modal__icon,
+.modal__input:focus~.modal__icon {
     fill: var(--accent-color);
 }
 
-.form .check {
+.modal__check {
     position: absolute;
     white-space: nowrap;
     width: 1px;
@@ -825,15 +800,14 @@ button {
     margin: -1px;
 }
 
-.form-field-policy {
+.modal__field-policy {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
-    margin-top: 20px;
+    margin: 20px auto 30px;
 }
 
-.check+.icon {
+.modal__check+.modal__check-icon {
     display: inline-block;
     margin-right: 7px;
     border-radius: 2px;
@@ -841,18 +815,18 @@ button {
     transition: border var(--timing-function), background-color var(--timing-function);
 }
 
-.check:checked+.icon {
+.modal__check:checked+.modal__check-icon {
     border-radius: 2px;
     border: 2px solid var(--accent-color);
     background-color: var(--accent-color);
 }
 
-.link-policy {
+.modal__link-policy {
     margin-left: 7px;
     color: var(--accent-color);
 }
 
-.modal-btn {
+.modal__button {
     display: block;
     cursor: pointer;
     margin: 0 auto;
@@ -870,8 +844,8 @@ button {
     transition: background-color var(--timing-function), box-shadow var(--timing-function);
 }
 
-.modal-btn:hover,
-.modal-btn:focus {
+.modal__button:hover,
+.modal__button:focus {
     background-color: var(--hero-btn-active);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
