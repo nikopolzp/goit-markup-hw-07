@@ -7,11 +7,11 @@
   background: $backdrop-background;
   opacity: 1;
   transition: opacity $timing-function;
-}
 
-.backdrop.is-hidden {
-  opacity: 0;
-  pointer-events: none;
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .modal {
@@ -26,19 +26,18 @@
   border-radius: 4px;
   transform: rotate(0) translate(-50%, -50%);
   transition: transform $timing-function;
-}
 
-.backdrop.is-hidden .modal {
-  transform: rotate(-90deg) translate(-50%, -50%);
+  .backdrop.is-hidden & {
+    transform: rotate(-120deg) translate(-50%, -50%);
+  }
 }
 
 .modal__close-btn {
   position: absolute;
   top: 8px;
   right: 8px;
-  display: flex;
+  @include centeredFlex();
   justify-content: center;
-  align-items: center;
   padding: 0;
   width: 30px;
   height: 30px;

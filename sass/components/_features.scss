@@ -21,8 +21,7 @@
 }
 
 .features__icon-background {
-  display: flex;
-  align-items: center;
+  @include centeredFlex();
   justify-content: center;
   margin-bottom: 30px;
   width: 270px;

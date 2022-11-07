@@ -3,13 +3,11 @@
 }
 
 .main-nav {
-  display: flex;
-  align-items: center;
+  @include centeredFlex();
 }
 
 .nav {
-  display: flex;
-  align-items: center;
+  @include centeredFlex();
 }
 
 .logo {
