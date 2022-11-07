@@ -10,7 +10,7 @@
   refs.closeMenuBtn.addEventListener('click', toggleMenu);
   // refs.menuList.addEventListener('click', removeMenu);
   function toggleMenu() {
-    refs.menu.classList.toggle('backdrop--is-hidden');
+    refs.menu.classList.toggle('is-hidden');
     refs.body.classList.toggle('no-scroll');
   }
   // function removeMenu() {

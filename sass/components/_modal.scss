@@ -9,13 +9,9 @@
   transition: opacity $timing-function;
 }
 
-.backdrop--is-hidden {
+.backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
-}
-
-.backdrop.is-hidden .modal {
-  transform: scale(1.1) translate(-50%, -50%);
 }
 
 .modal {
@@ -28,8 +24,12 @@
   background: $primary-color;
   box-shadow: $multilevel-box-shadow;
   border-radius: 4px;
-  transform: scale(1) translate(-50%, -50%);
+  transform: rotate(0) translate(-50%, -50%);
   transition: transform $timing-function;
+}
+
+.backdrop.is-hidden .modal {
+  transform: rotate(-90deg) translate(-50%, -50%);
 }
 
 .modal__close-btn {
